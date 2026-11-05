@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Prompts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Generador de prompts</h2>
+        <div class="subtitle">Completa los campos</div>
+
+        <!-- Formulario dentro de su tarjeta blanca independiente -->
+        <div class="form-card">
+            <form action="/guardar" method="POST">
+                <label for="materia">Materia</label>
+                <input type="text" id="materia" name="materia" placeholder="Ej: Fundamentos de programación" required>
+                
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" placeholder="Ej: Agregar una descripción" required></textarea>
+                
+                <div class="button-group">
+                    <button type="submit" class="btn-primary">Guardar prompt</button>
+                    <button type="reset" class="btn-secondary">Limpiar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="section-title">Prompts registrados</div>
+
+        <div class="prompts-container">
+            {% for p in prompts %}
+                <div class="prompt-card">
+                    <strong>{{ p.materia }}</strong>
+                    <p>{{ p.descripcion }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
