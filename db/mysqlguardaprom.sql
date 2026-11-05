@@ -1,0 +1,11 @@
+CREATE DATABASE prompts_db;
+
+USE prompts_db;
+
+CREATE TABLE prompts (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  materia VARCHAR(150) NOT NULL,
+  descripcion TEXT NOT NULL,
+  fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
